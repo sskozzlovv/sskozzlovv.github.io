@@ -1,0 +1,14 @@
+{
+  "port": 3000,
+  "db" : {
+    "connection": "mongodb://sskozzlovv:Skozlovich1@ds011452.mlab.com:11452/",
+    "name": "data-grid-db",
+    "options": {
+      "server": {
+        "socketOptions": {
+          "keepAlive": 1
+        }
+      }
+    }
+  }
+}
