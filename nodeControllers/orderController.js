@@ -5,10 +5,22 @@ module.exports.getOrders = function (req, res) {
             var page = req.query.page || 1;
             var itemsPerPage = req.query.itemsPerPage || 10;
             if (!err) {
-                var filteredOrders = orders.slice((page-1)*itemsPerPage, page*itemsPerPage);
+                var filteredOrders = orders.slice((page - 1) * itemsPerPage, page * itemsPerPage);
                 res.json({"orders": filteredOrders, ordersCount: orders.length});
             } else {
                 res.send(err);
             }
         });
+};
+module.exports.getStatuses = function (req, res) {
+    Order.getStatuses(null, function (err, statuses) {
+        if (!err) {
+
+            res.json(statuses.map(function (option) {
+                return {text: option, value: option};
+            }));
+        } else {
+            res.send(err);
+        }
+    });
 };

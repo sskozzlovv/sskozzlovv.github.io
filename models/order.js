@@ -26,5 +26,7 @@ userSchema.statics.getOrdersForPage = function (page, itemsPerPage, sort, orderN
     }
     query.exec(cb);
 };
-
+userSchema.statics.getStatuses = function (params, cb) {
+    var query = this.find().distinct('status', cb);
+};
 module.exports = mongoose.model('Order', userSchema);
